@@ -1,9 +1,7 @@
 package com.example.demo.team;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,6 +19,11 @@ public class TeamController {
     @GetMapping
     public List<Team> getTeam() {
       return teamService.getTeam();
+    }
+
+    @PostMapping
+    public void registerNewTeam(@RequestBody Team team){
+        teamService.addNewTeam(team);
     }
 
 }

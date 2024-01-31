@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -19,5 +20,13 @@ public class TeamService {
 
     public List<Team> getTeam() {
        return teamRepository.findAll();
+    }
+
+    public void addNewTeam(Team team) {
+        Optional<Team> teamOptional=teamRepository.findTeamByName(team.getName());
+        if (teamOptional.isPresent()){
+            throw new IllegalStateException("Team already exists");
+        }
+        teamRepository.save(team);
     }
 }
