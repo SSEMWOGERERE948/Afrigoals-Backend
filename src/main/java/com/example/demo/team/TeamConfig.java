@@ -17,8 +17,12 @@ public class TeamConfig {
                             1L,
                             "vipers"
             );
+            Team kcca =   new Team(
+                    2L,
+                    "kcca"
+            );
                  repository.saveAll(
-                         List.of(viper)
+                         List.of(viper,kcca)
                  );
         };
     }
